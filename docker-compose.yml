@@ -37,12 +37,14 @@ cdcservice:
 
 mysql:
   build: ./mysql
+  # image: eventuatemulti_mysql
   ports:
     - 3306:3306
   environment:
     - MYSQL_ROOT_PASSWORD=rootpassword
     - MYSQL_USER=mysqluser
     - MYSQL_PASSWORD=mysqlpw
+  # command: mysqld --skip-grant-tables
 
 consoleserver:
   image: eventuateio/eventuateio-local-console:0.15.0
