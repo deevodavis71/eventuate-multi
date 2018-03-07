@@ -44,6 +44,7 @@ public class TodoQueryWorkflow {
 
         Todo todo = new Todo(de.getEvent().getTodoInfo());
         todo.setId(de.getEntityId());
+        todo.addMetadata("Updated", "By Steve");
 
         todoQueryService.save(todo);
 

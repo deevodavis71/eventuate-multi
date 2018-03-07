@@ -28,7 +28,7 @@ public class TodoQueryService {
     public Todo save(Todo todo) {
 
         todo.setUpdatedAt(new Date());
-        
+
         return repository.save(todo);
 
     }

@@ -1,31 +1,39 @@
 package com.sjd.service1.query;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import com.sjd.service1.backend.domain.TodoInfo;
+import lombok.NoArgsConstructor;
 
 @Entity
+@NoArgsConstructor
 public class Todo {
 
     @Id
     private String id;
 
-    @Column
+    //@Column
     private String title;
 
-    @Column
+    //@Column
     private Boolean completed;
 
     @Column(name = "order_id")
     private Integer order;
 
-    @Column
+    //@Column
     private java.util.Date updatedAt;
 
-    public Todo() {
-    }
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<TodoMeta> metadata;
 
     public Todo(TodoInfo todoInfo) {
         this.title = todoInfo.getTitle();
@@ -89,6 +97,16 @@ public class Todo {
                 nonNull(newTodo.title, title),
                 nonNull(newTodo.completed, completed),
                 nonNull(newTodo.order, order));
+    }
+
+    public void addMetadata(String name, String value) {
+
+        if (metadata == null)
+            metadata = new ArrayList<>();
+
+        metadata.removeIf(f -> f.getName().equalsIgnoreCase(name));
+        metadata.add(new TodoMeta(name, value));
+
     }
 
     private <T> T nonNull(T value, T defaultValue) {
