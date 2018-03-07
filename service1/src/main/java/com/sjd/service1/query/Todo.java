@@ -11,12 +11,18 @@ public class Todo {
 
     @Id
     private String id;
+
     @Column
     private String title;
+
     @Column
     private Boolean completed;
+
     @Column(name = "order_id")
     private Integer order;
+
+    @Column
+    private java.util.Date updatedAt;
 
     public Todo() {
     }
@@ -70,13 +76,20 @@ public class Todo {
         this.order = order;
     }
 
+    public java.util.Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(java.util.Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
     public Todo merge(Todo newTodo) {
         return new Todo(id,
                 nonNull(newTodo.title, title),
                 nonNull(newTodo.completed, completed),
                 nonNull(newTodo.order, order));
     }
-
 
     private <T> T nonNull(T value, T defaultValue) {
         return value == null ? defaultValue : value;
