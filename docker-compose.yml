@@ -9,6 +9,7 @@ services:
       - 3888:3888
     depends_on: 
       - mysql
+
   kafka:
     image: eventuateio/eventuateio-local-kafka:0.15.0
     ports:

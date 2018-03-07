@@ -3,6 +3,7 @@ package com.sjd.service1.backend.domain.snapshot;
 import com.sjd.service1.backend.domain.TodoInfo;
 import io.eventuate.Snapshot;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * User: stevedavis
@@ -11,6 +12,7 @@ import lombok.Data;
  * Description:
  */
 @Data
+@NoArgsConstructor
 public class TodoSnapshot implements Snapshot {
 
     private TodoInfo info;

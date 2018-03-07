@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import com.sjd.service1.backend.command.CreateTodoCommand;
 import com.sjd.service1.backend.domain.TodoAggregate;
-import com.sjd.service1.backend.domain.TodoInfo;
 import io.eventuate.Aggregate;
 import io.eventuate.Aggregates;
 import io.eventuate.Event;

@@ -1,8 +1,7 @@
 package com.sjd.service1.query;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import com.sjd.service1.event.TodoCreatedEvent;
+import com.sjd.service1.event.TodoUpdatedEvent;
 import io.eventuate.DispatchedEvent;
 import io.eventuate.EventHandlerMethod;
 import io.eventuate.EventSubscriber;
@@ -21,17 +20,32 @@ public class TodoQueryWorkflow {
     private TodoQueryService todoQueryService;
 
     public TodoQueryWorkflow(TodoQueryService todoQueryService) {
+
         this.todoQueryService = todoQueryService;
+
     }
 
     @EventHandlerMethod
     public void create(DispatchedEvent<TodoCreatedEvent> de) {
 
-        log.info("GOT AN EVENT!!");
+        log.info("GOT A CREATE QUERY-VIEW EVENT!!");
 
-        Todo todo = new Todo(de.getEvent().getTodo());
+        Todo todo = new Todo(de.getEvent().getTodoInfo());
         todo.setId(de.getEntityId());
 
         todoQueryService.save(todo);
+
+    }
+
+    @EventHandlerMethod
+    public void update(DispatchedEvent<TodoUpdatedEvent> de) {
+
+        log.info("GOT A UPDATE QUERY-VIEW EVENT!!");
+
+        Todo todo = new Todo(de.getEvent().getTodoInfo());
+        todo.setId(de.getEntityId());
+
+        todoQueryService.save(todo);
+
     }
 }

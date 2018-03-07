@@ -5,7 +5,9 @@ import java.util.List;
 
 import com.sjd.service1.backend.command.CreateTodoCommand;
 import com.sjd.service1.backend.command.TodoCommand;
+import com.sjd.service1.backend.command.UpdateTodoCommand;
 import com.sjd.service1.event.TodoCreatedEvent;
+import com.sjd.service1.event.TodoUpdatedEvent;
 import io.eventuate.Event;
 import io.eventuate.EventUtil;
 import io.eventuate.ReflectiveMutableCommandProcessingAggregate;
@@ -27,10 +29,33 @@ public class TodoAggregate extends ReflectiveMutableCommandProcessingAggregate<T
         return EventUtil.events(new TodoCreatedEvent(cmd.getTodoInfo()));
     }
 
-    public void apply(TodoCreatedEvent event) {
-        this.todoInfo = event.getTodo();
+    public List<Event> process(UpdateTodoCommand cmd) {
+
+        if (this.deleted) {
+            return Collections.emptyList();
+        }
+
+        return EventUtil.events(new TodoUpdatedEvent(cmd.getTodo()));
+
     }
 
+    public void apply(TodoCreatedEvent event) {
+
+        this.todoInfo = event.getTodoInfo();
+
+    }
+
+    public void apply(TodoUpdatedEvent event) {
+
+        TodoInfo update = event.getTodoInfo();
+
+        if (update.getTitle() != null)
+            this.todoInfo.setTitle(update.getTitle());
+
+        if (update.getOrder() > 0)
+            this.todoInfo.setOrder(update.getOrder());
+
+    }
 }
 
 
