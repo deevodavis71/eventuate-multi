@@ -9,10 +9,13 @@ import com.sjd.service1.event.TodoCreatedEvent;
 import io.eventuate.Event;
 import io.eventuate.EventUtil;
 import io.eventuate.ReflectiveMutableCommandProcessingAggregate;
+import lombok.Data;
 
+@Data
 public class TodoAggregate extends ReflectiveMutableCommandProcessingAggregate<TodoAggregate, TodoCommand> {
 
     private TodoInfo todoInfo;
+
     private boolean deleted;
 
     public List<Event> process(CreateTodoCommand cmd) {

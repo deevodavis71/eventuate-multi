@@ -5,11 +5,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.sjd.service1.backend.command.TodoCommand;
 import com.sjd.service1.backend.domain.TodoAggregate;
+import com.sjd.service1.backend.domain.snapshot.TodoSnapshotStrategy;
 import com.sjd.service1.query.TodoQueryService;
 import com.sjd.service1.query.TodoQueryWorkflow;
 import io.eventuate.AggregateRepository;
@@ -38,5 +38,10 @@ public class TodoBackendConfiguration {
     @Bean
     public TodoQueryWorkflow todoQueryWorkflow(TodoQueryService queryService) {
         return new TodoQueryWorkflow(queryService);
+    }
+
+    @Bean
+    public TodoSnapshotStrategy todoSnapshotStrategy() {
+        return new TodoSnapshotStrategy();
     }
 }

@@ -1,5 +1,6 @@
 package com.sjd.service1.backend.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 /**
@@ -9,6 +10,7 @@ import lombok.Data;
  * Description:
  */
 @Data
+@AllArgsConstructor
 public class TodoInfo {
 
     private String title;
