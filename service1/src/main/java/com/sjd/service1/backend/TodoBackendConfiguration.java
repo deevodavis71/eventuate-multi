@@ -31,13 +31,13 @@ import io.eventuate.javaclient.spring.EnableEventHandlers;
 public class TodoBackendConfiguration {
 
     @Bean
-    public AggregateRepository<TodoAggregate, TodoCommand> aggregateRepository(EventuateAggregateStore eventStore) {
-        return new AggregateRepository<>(TodoAggregate.class, eventStore);
+    public AggregateRepository<TodoAggregate, TodoCommand> aggregateRepository(EventuateAggregateStore aggEventStore) {
+        return new AggregateRepository<>(TodoAggregate.class, aggEventStore);
     }
 
     @Bean
-    public TodoQueryWorkflow todoQueryWorkflow(TodoQueryService queryService) {
-        return new TodoQueryWorkflow(queryService);
+    public TodoQueryWorkflow todoQueryWorkflow(TodoQueryService queryService, EventuateAggregateStore aggEventStore) {
+        return new TodoQueryWorkflow(queryService, aggregateRepository(aggEventStore));
     }
 
     @Bean
