@@ -1,4 +1,4 @@
-package com.sjd.service1.event;
+package com.sjd.common.event;
 
 
 import io.eventuate.Event;

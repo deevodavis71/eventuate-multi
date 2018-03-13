@@ -1,6 +1,6 @@
-package com.sjd.service1.event;
+package com.sjd.common.event;
 
-import com.sjd.service1.backend.domain.TodoInfo;
+import com.sjd.common.backend.domain.TodoInfo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 

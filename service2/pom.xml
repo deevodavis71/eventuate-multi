@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sjd.eventuate</groupId>
-    <artifactId>service1</artifactId>
+    <artifactId>service2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>service1</name>
-    <description>Eventuate Service 1</description>
+    <name>service2</name>
+    <description>Eventuate Service 2</description>
 
     <parent>
         <groupId>com.sjd</groupId>

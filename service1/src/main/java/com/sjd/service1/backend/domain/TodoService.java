@@ -4,6 +4,7 @@ import java.util.concurrent.CompletableFuture;
 
 import org.springframework.stereotype.Service;
 
+import com.sjd.common.backend.domain.TodoInfo;
 import com.sjd.service1.backend.command.CreateTodoCommand;
 import com.sjd.service1.backend.command.TodoCommand;
 import com.sjd.service1.backend.command.UpdateTodoCommand;

@@ -1,4 +1,4 @@
-package com.sjd.service1.backend.domain;
+package com.sjd.common.backend.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

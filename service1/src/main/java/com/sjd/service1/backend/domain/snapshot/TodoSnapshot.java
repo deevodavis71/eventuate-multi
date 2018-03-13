@@ -1,6 +1,6 @@
 package com.sjd.service1.backend.domain.snapshot;
 
-import com.sjd.service1.backend.domain.TodoInfo;
+import com.sjd.common.backend.domain.TodoInfo;
 import io.eventuate.Snapshot;
 import lombok.Data;
 import lombok.NoArgsConstructor;

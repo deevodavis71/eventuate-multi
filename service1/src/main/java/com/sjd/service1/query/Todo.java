@@ -10,7 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.sjd.service1.backend.domain.TodoInfo;
+import com.sjd.common.backend.domain.TodoInfo;
 import lombok.NoArgsConstructor;
 
 @Entity

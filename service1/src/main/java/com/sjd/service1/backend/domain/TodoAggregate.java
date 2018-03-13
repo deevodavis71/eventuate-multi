@@ -3,13 +3,14 @@ package com.sjd.service1.backend.domain;
 import java.util.Collections;
 import java.util.List;
 
+import com.sjd.common.backend.domain.TodoInfo;
+import com.sjd.common.event.TodoCreatedEvent;
+import com.sjd.common.event.TodoUpdatedEvent;
+import com.sjd.common.event.TodoUppercasedEvent;
 import com.sjd.service1.backend.command.CreateTodoCommand;
 import com.sjd.service1.backend.command.TodoCommand;
 import com.sjd.service1.backend.command.UpdateTodoCommand;
 import com.sjd.service1.backend.command.UppercaseTodoCommand;
-import com.sjd.service1.event.TodoCreatedEvent;
-import com.sjd.service1.event.TodoUpdatedEvent;
-import com.sjd.service1.event.TodoUppercasedEvent;
 import io.eventuate.Event;
 import io.eventuate.EventUtil;
 import io.eventuate.ReflectiveMutableCommandProcessingAggregate;
